@@ -1,0 +1,116 @@
+    body {
+        font-family: sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        /* align-items: center;
+        justify-content: center; */
+        height: 100vh;
+        color: #333;
+    }
+
+    header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding: 20px;
+        background-color: white;
+    }
+
+    #logo {
+        width: 20%;
+        font-size: 20px;
+        color: #333;
+    }
+
+    #logo i {
+        width: 40px;
+        height: 30px;
+    }
+
+    #search {
+        width: 80%;
+        padding: 10px;
+        border: none;
+        border-radius: 20px;
+    }
+
+    #search .search-bar {
+        width: 73%;
+        height: 40px;
+        border: none;
+        background-color: rgba(161, 159, 159, 0.341);
+        border-radius: 10px;
+    }
+
+    #profile {
+        display: block;
+        text-align: center;
+
+    }
+
+    #title-bar {
+        display: block;
+        /* flex-direction: row;
+        align-items: center; */
+        width: 100%;
+        position: relative;
+    }
+
+    #title-bar .day {
+        position: absolute;
+        left: 400px;
+
+    }
+
+    #container-full {
+        padding-top: 10px;
+        display: flex;
+        width: 100%;
+        height: 150px;
+        margin-top: 50px;
+    }
+
+    #container-full .empty {
+        width: 20%;
+        height: 100%;
+    }
+
+    #container-full .container {
+        display: flex;
+        width: 65%;
+        height: 100%;
+    }
+
+    .container .image-src {
+        width: 10%;
+        height: 100%;
+        border: 1px solid rgba(0, 0, 0, 0.184);
+        border-radius: 10px;
+        position: relative;
+
+    }
+
+    .container .image-src img {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        left: 18px;
+        top: 30px;
+    }
+
+    .container .description {
+        padding-left: 20px;
+        border: 1px solid rgba(0, 0, 0, 0.184);
+        border-radius: 10px;
+        width: 80%;
+        height: 100%;
+    }
+    /* .container .description img{
+        display: flex;
+        width: 10px;
+        float: right;
+        height: 20px;
+    } */
