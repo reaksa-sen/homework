@@ -1,5 +1,7 @@
     body {
+        overflow-x: hidden;
         font-family: sans-serif;
+        position: relative;
         margin: 0;
         padding: 0;
         display: flex;
@@ -114,3 +116,75 @@
         float: right;
         height: 20px;
     } */
+
+
+
+    /*
+        02/04/20024
+    */
+
+    /* Popup container */
+    .popup {
+        position: relative;
+        display: none;
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(150%, -50%);
+        background-color: #f1f1f1;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        z-index: 1;
+    }
+
+    /* Overlay */
+    .overlay {
+        display: none;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 0;
+    }
+
+    /* Button style */
+    .btn {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 10px;
+        height: 18px;
+    }
+
+    /* Button hover effect */
+    .btn:hover {
+        background-color: #0056b3;
+    }
+
+    /* Show popup when anchor link is targeted */
+    #popup:target {
+        display: block;
+    }
+
+    /* Show overlay when anchor link is targeted */
+    #overlay:target {
+        display: block;
+    }
+
+    .fly{
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+    }
+
+    .xmark{
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
