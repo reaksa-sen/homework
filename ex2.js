@@ -23,156 +23,113 @@
 
 //3. 
 
-// const calculateAverage = (numbers) => {
-//     // Check if the array is empty
-//     if (numbers.length === 0) {
-//         return 0;
+// const average = (number) => {
+//     let sum = 0;
+//     for (let index = 0; index < number.length; index++) {
+//       sum = sum + number[index];
 //     }
-
-//     // Calculate the sum of numbers using reduce method
-//     const sum = numbers.reduce((acc, curr) => acc + curr, 0);
-
-//     // Calculate the average by dividing the sum by the number of elements
-//     return sum / numbers.length;
-// };
-
-// // Example usage:
-// const numbers = [10, 20, 30, 40, 50];
-// console.log(calculateAverage(numbers)); // Output: 30
+//     return sum / number.length;
+//   };
+//   console.log(average([10, 20, 30, 40, 50]));
 
 
 //4.
 
-// const calculateBMI = function(weight, height) {
-//     // Check if height is zero to avoid division by zero
-//     if (height === 0) {
-//         return "Height cannot be zero!";
-//     }
 
-//     // Calculate BMI using the formula
-//     const bmi = weight / (height * height);
-
-//     return bmi;
-// };
-
-// // Example usage:
-// const weight = 70; // in kilograms
-// const height = 1.75; // in meters
-// console.log("BMI:", calculateBMI(weight, height)); // Output: BMI: 22.86
+// (function (weight, height) {
+//     console.log(Math.ceil(weight / (height * height)));
+//   })(70, 1.72);
 
 // 5. 
 
-// function filterProducts(products) {
-//     return products.filter(product => product.quantity > 0);
-// }
-
-// // Example usage:
-// const products = [
-//     { name: "Laptop", price: 1000, quantity: 2 },
-//     { name: "Phone", price: 800, quantity: 0 },
-//     { name: "Tablet", price: 500, quantity: 3 },
-//     { name: "Headphones", price: 100, quantity: 0 }
-// ];
-
-// const filteredProducts = filterProducts(products);
-// console.log(filteredProducts);
+// function myProduct(product) {
+//     for (let index = 0; index < product.length; index++) {
+//       if (product[index].quantity > 0) {
+//         console.log(
+//           "Product name:",
+//           product[index].name,
+//           "product price:",
+//           product[index].price,
+//           "product quantity:",
+//           product[index].quantity
+//         );
+//       }
+//     }
+//   }
+//   myProduct([
+//     { name: "Shirt", price: 10, quantity: 1 },
+//     { name: "pant", price: 20, quantity: 0 },
+//     { name: "hat", price: 30, quantity: 2 },
+//   ]);
 
 
 //6.
 
-// function isPasswordStrong(password) {
-//     // Check if the password length is at least 8 characters
-//     return password.length >= 8;
-// }
-
-// // Example usage:
-// const password1 = "12345678"; // Weak password
-// const password2 = "password123"; // Strong password
-
-// console.log(isPasswordStrong(password1)); // Output: false
-// console.log(isPasswordStrong(password2)); // Output: true
+// function checkPassword(password) {
+//     if (password.length >= 8) {
+//       console.log("strong password");
+//     } else {
+//       console.log("your password is weak");
+//     }
+//   }
+//   checkPassword("12345678");
 
 //7.
 
-// function countVowels(str) {
-//     // Convert the string to lowercase to handle both uppercase and lowercase vowels
-//     str = str.toLowerCase();
-    
-//     // Define an array of vowels
-//     const vowels = ['a', 'e', 'i', 'o', 'u'];
-
-//     // Initialize a counter to keep track of the number of vowels
+// function countVowel(string) {
 //     let count = 0;
-
-//     // Iterate through each character in the string
-//     for (let char of str) {
-//         // If the character is a vowel, increment the counter
-//         if (vowels.includes(char)) {
-//             count++;
-//         }
+//     for (let index = 0; index < string.length; index++) {
+//       if (
+//         string[index] === "a" ||
+//         string[index] === "e" ||
+//         string[index] === "i" ||
+//         string[index] === "o" ||
+//         string[index] === "u"
+//       ) {
+//         count++;
+//       }
 //     }
-
 //     return count;
-// }
-
-// // Example usage:
-// const inputString = "Hello World";
-// console.log("Number of vowels:", countVowels(inputString)); // Output: Number of vowels: 3
+//   }
+//   console.log(countVowel("hola hello"));
 
 //8. 
-// function sortAscending(numbers) {
-//     // Use the Array.sort() method to sort the numbers in ascending order
-//     return numbers.sort((a, b) => a - b);
-// }
 
-// // Example usage:
-// const numbers = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3];
-// console.log("Sorted numbers:", sortAscending(numbers)); // Output: Sorted numbers: [1, 1, 2, 3, 3, 4, 5, 5, 6, 9]
+// function sortNumber(number) {
+//     return number.sort((aa, bb) => aa - bb);
+//   }
+//   console.log(sortNumber([40, 20, 1000, 30, 2, 0]));
 
 
 //9.
 
-// function median(numbers) {
-//     // Sort the array of numbers in ascending order
-//     numbers.sort((a, b) => a - b);
-
-//     // Calculate the middle index of the sorted array
-//     const middleIndex = Math.floor(numbers.length / 2);
-
-//     // Check if the array length is odd or even
-//     if (numbers.length % 2 === 0) {
-//         // If the array length is even, return the average of the two middle values
-//         return (numbers[middleIndex - 1] + numbers[middleIndex]) / 2;
-//     } else {
-//         // If the array length is odd, return the middle value
-//         return numbers[middleIndex];
+// function madianValue(array) {
+//     let sortedArray = array.sort((a, b) => a - b);
+//     let medianNumber = 0;
+  
+//     for (let index = 0; index < sortedArray.length; index++) {
+//       if (sortedArray.length % 2 == 0) {
+//         medianNumber = sortedArray.length / 2;
+//         return (array[medianNumber - 1] + array[medianNumber]) / 2;
+//       } else {
+//         return Math.ceil(sortedArray.length / 2);
+//       }
 //     }
-// }
-
-// // Example usage:
-// const numbers = [5, 3, 9, 2, 7];
-// console.log("Median:", median(numbers)); // Output: Median: 5
+//   }
+//   console.log(madianValue([1, 2, 3, 4, 5, 6, 7, 8, 9]));
 
 //10. 
 
-// function factorial(n) {
-//     // Check if the input number is non-negative
-//     if (n < 0) {
-//         return "Factorial is not defined for negative numbers";
+// function factorialNumber(nonnegative) {
+//     let factorial = 1;
+//     if (nonnegative > 0) {
+//       for (let index = 1; index <= nonnegative; index++) {
+//         factorial = factorial * index;
+//       }
+//     } else {
+//       console.log("Error");
 //     }
-
-//     // Initialize the result variable to store the factorial value
-//     let result = 1;
-
-//     // Calculate the factorial using a loop
-//     for (let i = 2; i <= n; i++) {
-//         result *= i;
-//     }
-
-//     return result;
-// }
-
-// // Example usage:
-// const number = 5;
-// console.log("Factorial of", number, "is:", factorial(number)); // Output: Factorial of 5 is: 120
+//     return factorial; 
+//   }
+//   console.log(factorialNumber(7));
 
