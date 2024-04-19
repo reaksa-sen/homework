@@ -93,7 +93,7 @@ function writeFileContents(filePath, fileContents, callback) {
 }
 
 // Example usage:
-const filePath = 'd:/chrome/output4.txt'; // Replace with the actual file path
+const filePath = 'd:/chrome/ex3/output4.txt'; // Replace with the actual file path
 const fileContents = 'Hello i am reaksa'; // Replace with the content you want to write
 writeFileContents(filePath, fileContents, (err) => {
     if (err) {
