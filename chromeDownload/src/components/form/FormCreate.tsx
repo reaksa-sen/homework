@@ -49,15 +49,25 @@ function FormCreate({
     onClickClosePop(false);
   };
 
+  // const handleImage = (e: ChangeEvent<HTMLInputElement>) => {
+  //   const file = e.target.files && e.target.files[0];
+  //   if (file) {
+  //     const reader = new FileReader();
+  //     reader.onloadend = () => {
+  //       if (typeof reader.result === "string") {
+  //         handleImageChange(reader.result);
+  //       }
+  //     };
+  //     reader.readAsDataURL(file);
+  //   }
+  // };
+
   const handleImage = (e: ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files && e.target.files[0];
+    const file = e.target.files?.[0];
     if (file) {
       const reader = new FileReader();
-      reader.onloadend = () => {
-        if (typeof reader.result === "string") {
-          handleImageChange(reader.result);
-        }
-      };
+      reader.onloadend = () =>
+        typeof reader.result === "string" && handleImageChange(reader.result);
       reader.readAsDataURL(file);
     }
   };
