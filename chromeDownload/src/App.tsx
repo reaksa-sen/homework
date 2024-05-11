@@ -1,5 +1,9 @@
 import HomePage from "./components/HomePage";
 
 export default function App() {
-  return <HomePage />;
+  return (
+    <div>
+      <HomePage />
+    </div>
+  );
 }
