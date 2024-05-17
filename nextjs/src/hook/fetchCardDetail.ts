@@ -1,34 +1,25 @@
-// // hooks/useFetch.ts
-// import { useState, useEffect } from 'react';
-// import axios from 'axios';
-// import { CardProps } from '@/components/card';
+// import { useState, useCallback } from 'react';
 
-// const useFetchDetail = (url:string) => {
-//   const [data, setData] = useState<CardProps | null>(null);
-//   const [loading, setLoading] = useState<boolean>(true);
-//   const [error, setError] = useState<string | null>(null);
+// function useFetchDetail() {
+//   const [data, setData] = useState(null);
 
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       try {
-//         const response = await axios.get<CardProps>(url);
-//         setData(response.data);
-//       } catch (err) {
-//         setError(err instanceof Error ? err.message : 'An error occurred');
-//       } finally {
-//         setLoading(false);
-//       }
-//     };
+//   const fetchData = useCallback(async (url:string) => {
+//     try {
+//       const response = await fetch(url);
+//       const result = await response.json();
+//       setData(result);
+//     } catch (error) {
+//       console.error("Failed to fetch data:", error);
+//     }
+//   }, []);
 
-//     fetchData();
-//   }, [url]);
-
-//   return { data, loading, error };
-// };
+//   return { data, fetchData };
+// }
 
 // export default useFetchDetail;
 
 
+//2
 import { CardProps } from "@/components/card";
 import { useState, useCallback } from "react";
 
@@ -46,6 +37,7 @@ const useFetchDetail = () => {
       if (!response.ok) {
         throw new Error(`Error: ${response.statusText}`);
       }
+      console.log("hello",data)
       const result: CardProps = await response.json();
       console.log('API Response:', result); // Log the API response
       setData(result);

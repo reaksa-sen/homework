@@ -5,7 +5,6 @@ import { CardProps } from '@/components/card';
 
 const useFetch = (url:string) => {
   const [data, setData] = useState<CardProps[] | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -14,16 +13,14 @@ const useFetch = (url:string) => {
         const response = await axios.get<CardProps[]>(url);
         setData(response.data);
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'An error occurred');
-      } finally {
-        setLoading(false);
+        setError('An error occurred');
       }
     };
 
     fetchData();
-  }, [url]);
+  },[url]);
 
-  return { data, loading, error };
+  return { data, error };
 };
 
 export default useFetch;
