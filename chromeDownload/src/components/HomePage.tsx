@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { createContext, useState } from "react";
 import NavBar from "./header/NavBar";
 import FloatingButton from "./modal/FloatingButton";
 import PopUp from "./modal/PopUp";
@@ -10,7 +10,20 @@ export interface IPropertiesCard {
   creator: string;
   image?: string;
   borderColor?: string;
+  showPopup?: boolean;
+  // buttonIcon: boolean;
+  handleFilenameChange?: (value: string) => void;
+  handleCreatorChange?: (value: string) => void;
+  handleImageChange?: (value: string) => void;
+  handleRemoveCart?: (title: string) => void;
+  handleUpdate?:(id: number, updateItem: IPropertiesCard) => void;
+  onClickClosePop?: (isPopup: boolean) => void;
+  onSubmit?: (formData: IPropertiesCard) => void;
 }
+
+// Make all properties in Type optional
+export type PartialIPropertiesCard = Partial<IPropertiesCard>;
+export const HomeContext = createContext<PartialIPropertiesCard>({});
 
 export default function HomePage() {
   const [showPopup, setShowPopup] = useState<boolean>(false);
@@ -102,40 +115,51 @@ export default function HomePage() {
     }
     return filtered;
   };
-
-  
-
   const newData = handleFilter();
 
   return (
-    <div className=" flex flex-col gap-16 ">
-      <NavBar handleSearch={setSearchValue} />
-      {/* modal */}
-      <FloatingButton
-        handleShowPopup={handleShowPopup}
-        buttonIcon={buttonIcon}
-      />
-      <div className=" absolute left-0 bottom-0"></div>
-      <PopUp
-        showPopup={showPopup}
-        onClickClosePop={handleShowPopup}
-        onSubmit={handleFormSubmit}
-        filename={filename}
-        creator={creator}
-        image={image}
-        buttonIcon={buttonIcon}
-        handleFilenameChange={handleFilenameChange}
-        handleCreatorChange={handleCreatorChange}
-        handleImageChange={handleImageChange}
-      />
-      {/* CardList */}
-      <CardList
-        props={{
-          data: newData,
-          handleRemoveCart: handleRemoveCart,
-          handleUpdate: handleUpdate,
-        }}
-      />
-    </div>
+    <HomeContext.Provider
+      value={{
+        filename,
+        creator,
+        image,
+        showPopup,
+        handleFilenameChange,
+        handleCreatorChange,
+        handleImageChange,
+        handleRemoveCart,
+        handleUpdate,
+      }}
+    >
+      <div className=" flex flex-col gap-16 ">
+        <NavBar handleSearch={setSearchValue} />
+        {/* modal */}
+        <FloatingButton
+          handleShowPopup={handleShowPopup}
+          buttonIcon={buttonIcon}
+        />
+        <div className=" absolute left-0 bottom-0"></div>
+        <PopUp
+          showPopup={showPopup}
+          onClickClosePop={handleShowPopup}
+          onSubmit={handleFormSubmit}
+          filename={filename}
+          creator={creator}
+          image={image}
+          buttonIcon={buttonIcon}
+          handleFilenameChange={handleFilenameChange}
+          handleCreatorChange={handleCreatorChange}
+          handleImageChange={handleImageChange}
+        />
+        {/* CardList */}
+        <CardList
+          props={{
+            data: newData,
+            handleRemoveCart: handleRemoveCart,
+            handleUpdate: handleUpdate,
+          }}
+        />
+      </div>
+    </HomeContext.Provider>
   );
 }

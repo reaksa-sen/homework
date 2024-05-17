@@ -1,5 +1,5 @@
-import { ChangeEvent, useEffect, useState } from "react";
-import { IPropertiesCard } from "../HomePage";
+import { ChangeEvent, useContext, useEffect, useState } from "react";
+import { HomeContext, IPropertiesCard, PartialIPropertiesCard } from "../HomePage";
 import { MdClear } from "react-icons/md";
 
 interface Props {
@@ -16,7 +16,7 @@ interface Props {
 }
 let nextId: number = 1;
 
-function FormCreate({
+const FormCreate: React.FC<Props> = ({
   showPopup,
   onClickClosePop,
   onSubmit,
@@ -27,7 +27,11 @@ function FormCreate({
   handleFilenameChange,
   handleCreatorChange,
   handleImageChange,
-}: Props) {
+}) => {
+
+  // const {} = useContext<PartialIPropertiesCard>(HomeContext)
+
+
   const [shouldRender, setShouldRender] = useState(showPopup);
 
   useEffect(() => {
