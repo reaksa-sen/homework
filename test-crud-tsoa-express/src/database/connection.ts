@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import configs from "../utils/config";
+import configs from "../config";
 
 const uri = configs.mongodbUrl
 

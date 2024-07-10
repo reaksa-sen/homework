@@ -1,6 +1,6 @@
 import app from "@/src/app";
-import configs from "@/src/utils/config";
 import { ConnectDB } from "./database/connection";
+import configs from "./config";
 
 function run() {
   // ========================
