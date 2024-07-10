@@ -1,23 +1,22 @@
-import { IPropertiesCard } from '../HomePage'
-import FormCreate from '../form/FormCreate';
+import { IPropertiesCard } from "../HomePage";
+import FormCreate from "../form/FormCreate";
 
-interface PropsType {
-  filename: string,
-  creator: string,
-  image?: string,
+interface Props {
+  filename: string;
+  creator: string;
+  image?: string;
   showPopup: boolean;
-  buttonIcon:boolean;
-  handleFilenameChange:(value: string) => void;
-  handleCreatorChange:(value: string) => void;
-  handleImageChange:(value: string) => void;
-  onClickClosePop: (isPopup:boolean)=>void;
+  buttonIcon: boolean;
+  handleFilenameChange: (value: string) => void;
+  handleCreatorChange: (value: string) => void;
+  handleImageChange: (value: string) => void;
+  onClickClosePop: (isPopup: boolean) => void;
   onSubmit: (formData: IPropertiesCard) => void;
 }
 
-
-function PopUp({
-  showPopup, 
-  onClickClosePop, 
+const PopUp: React.FC<Props> = ({
+  showPopup,
+  onClickClosePop,
   onSubmit,
   filename,
   creator,
@@ -26,23 +25,23 @@ function PopUp({
   handleFilenameChange,
   handleCreatorChange,
   handleImageChange,
-}: PropsType) {
+}) => {
   return (
     <div>
-      <FormCreate 
-      showPopup={showPopup} 
-      onClickClosePop={onClickClosePop} 
-      onSubmit={onSubmit}
-      filename={filename}
-      creator={creator}
-      image={image}
-      buttonIcon={buttonIcon}
-      handleFilenameChange={handleFilenameChange}
-      handleCreatorChange={handleCreatorChange}
-      handleImageChange={handleImageChange}
+      <FormCreate
+        showPopup={showPopup}
+        onClickClosePop={onClickClosePop}
+        onSubmit={onSubmit}
+        filename={filename}
+        creator={creator}
+        image={image}
+        buttonIcon={buttonIcon}
+        handleFilenameChange={handleFilenameChange}
+        handleCreatorChange={handleCreatorChange}
+        handleImageChange={handleImageChange}
       />
     </div>
-  )
-}
+  );
+};
 
-export default PopUp
+export default PopUp;

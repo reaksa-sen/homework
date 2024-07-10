@@ -2,11 +2,11 @@ import  { useEffect, useState } from "react";
 import { HiEllipsisVertical } from "react-icons/hi2";
 import Search from "./Search";
 
-interface IPropType {
+interface Props {
   handleSearch: (searchTerm: string) => void;
 }
 
-function NavBar({handleSearch}: IPropType) {
+const NavBar:React.FC<Props> =({handleSearch}) =>{
 
     const [header, setHeader] = useState<boolean>(false);
     
