@@ -9,19 +9,32 @@
 		"schemas": {
 			"IUser": {
 				"properties": {
+					"_id": {
+						"type": "string"
+					},
 					"name": {
 						"type": "string"
 					},
 					"email": {
 						"type": "string"
 					},
+					"age": {
+						"type": "number",
+						"format": "double"
+					},
 					"gender": {
-						"type": "string"
+						"type": "string",
+						"enum": [
+							"male",
+							"female",
+							"other"
+						]
 					}
 				},
 				"required": [
 					"name",
 					"email",
+					"age",
 					"gender"
 				],
 				"type": "object",
@@ -29,14 +42,26 @@
 			},
 			"Partial_IUser_": {
 				"properties": {
+					"_id": {
+						"type": "string"
+					},
 					"name": {
 						"type": "string"
 					},
 					"email": {
 						"type": "string"
 					},
+					"age": {
+						"type": "number",
+						"format": "double"
+					},
 					"gender": {
-						"type": "string"
+						"type": "string",
+						"enum": [
+							"male",
+							"female",
+							"other"
+						]
 					}
 				},
 				"type": "object",
@@ -221,6 +246,40 @@
 					{
 						"in": "query",
 						"name": "limit",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "sort",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "gender",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "minAge",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "maxAge",
 						"required": false,
 						"schema": {
 							"format": "double",
