@@ -450,13 +450,14 @@ app.use(notFoundHandler);
 app.use(errorHandler);
 var app_default = app;
 
-// src/utils/config.ts
+// src/config.ts
 var import_dotenv = __toESM(require("dotenv"));
 var import_path2 = __toESM(require("path"));
 var yup = __toESM(require("yup"));
 function loadConfig() {
   const env = "production";
-  const envPath = import_path2.default.resolve(__dirname, `../configs/.env.${env}`);
+  const envPath = import_path2.default.resolve(__dirname, `./configs/.env.${env}`);
+  console.log(`Loading environment variables from: ${envPath}`);
   import_dotenv.default.config({ path: envPath });
   const envVarsSchema = yup.object().shape({
     NODE_ENV: yup.string().oneOf(["development", "production", "test"]).default("development"),
