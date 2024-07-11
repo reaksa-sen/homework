@@ -9,9 +9,9 @@ class UserRepository {
         throw new NotFoundError("User not found");
       }
       return user;
-    } catch (error) {
+    } /* catch (error) {
       throw error;
-    }
+    } */
   }
 
   public async createUser(data: Partial<IUser>): Promise<IUser> {
