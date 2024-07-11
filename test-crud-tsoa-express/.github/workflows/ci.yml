@@ -1,24 +1,31 @@
-name: Unit Tests
+name: CI
 
-on: [pull_request]
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
 
 jobs:
-  tests:
-
+  build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [14.x, 16.x, 18.x]
-
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-    - run: yarn install
-    - run: yarn build
-    - run: yarn test
-      env:
-        CI: true
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18.0.0'
+
+      - name: Install dependencies
+        run: yarn install 
+
+      - name: Generate TSOA routes and spec
+        run: yarn tsoa:gen
+
+      - name: Run tests
+        run: yarn test
