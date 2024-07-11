@@ -6,7 +6,7 @@ function run() {
   // ========================
   // Connect Database
   // ========================
-  ConnectDB();
+  ConnectDB(); 
   app.listen(configs.port, () => {
     console.log(`User Service running on Port: ${configs.port}`);
   });
